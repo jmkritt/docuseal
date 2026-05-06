@@ -34,7 +34,7 @@ module Submitters
       with_decline = find_safe_value(configs, AccountConfig::ALLOW_TO_DECLINE_KEY) != false
       with_delegate = find_safe_value(configs, AccountConfig::ALLOW_TO_DELEGATE_KEY) == true
       with_partial_download = find_safe_value(configs, AccountConfig::ALLOW_TO_PARTIAL_DOWNLOAD_KEY) != false
-      with_signature_id = find_safe_value(configs, AccountConfig::WITH_SIGNATURE_ID) == true
+      with_signature_id = find_safe_value(configs, AccountConfig::WITH_SIGNATURE_ID) != false
       require_signing_reason = find_safe_value(configs, AccountConfig::REQUIRE_SIGNING_REASON_KEY) == true
       enforce_signing_order = find_safe_value(configs, AccountConfig::ENFORCE_SIGNING_ORDER_KEY) == true
       with_submitter_timezone = find_safe_value(configs, AccountConfig::WITH_SUBMITTER_TIMEZONE_KEY) == true
