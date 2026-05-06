@@ -41,3 +41,33 @@ dump.rdb
 
 # Local docker volume
 /data/
+
+# === Additional safeguards (Kritt fork) ===
+# Secrets / private keys
+*.key
+*.pem
+*.crt
+*.pfx
+*.p12
+.env.local
+.env.production
+.env.*.local
+
+# Database dumps & backups
+*.sql
+*.sql.gz
+*.dump
+*.bak
+*.backup
+
+# Cloud credentials
+.aws/
+.boto
+service-account*.json
+gcp-*.json
+firebase-*.json
+
+# OS / editor
+.idea/
+.vscode/
+Thumbs.db
