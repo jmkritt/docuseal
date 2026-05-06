@@ -1,3 +1,21 @@
+> ## 🍴 About this fork
+>
+> This is a fork of [docusealco/docuseal](https://github.com/docusealco/docuseal) maintained by [@jmkritt](https://github.com/jmkritt) for use in real-estate workflows (counter-offers, listing agreements, transactional signing). It tracks upstream and adds the changes below. Patches are happy to be cherry-picked back upstream — feel free to open a PR against `docusealco/docuseal` referencing the relevant commits, or use them as inspiration.
+>
+> ### What this fork changes
+>
+> - **DocuSign-style "wrap" around signed signatures and initials** — a left-side amber bracket (rendered via HexaPDF in [`lib/submissions/generate_result_attachments.rb`](lib/submissions/generate_result_attachments.rb)) plus a clean header (`Digitally signed by:` / `Initials:`), the signature image, optional caption, and a truncated document ID. Helvetica typography, page-derived font sizing so signatures and initials match, asymmetric bottom-stub flourish.
+> - **Mirrored treatment in the signing UI** — the same look applied in [`app/javascript/submission_form/area.vue`](app/javascript/submission_form/area.vue) and [`app/views/submissions/_value.html.erb`](app/views/submissions/_value.html.erb) so the live signing review and the completed-submission page match the generated PDF.
+> - **`with_signature_id` defaults to ON** — flipped at three layers ([`form_configs.rb`](lib/submitters/form_configs.rb), [`submissions/show.html.erb`](app/views/submissions/show.html.erb), [`form.js`](app/javascript/form.js)) so the document ID renders without an admin toggle.
+> - **`with_disclosure` enabled by default** in [`_submission_form.html.erb`](app/views/submit_form/_submission_form.html.erb) so the Electronic Signature Disclosure link renders for ESIGN compliance.
+> - **Typed initials use Dancing Script** ([`generate_font_image.rb`](lib/submitters/generate_font_image.rb)) — was Go Noto Bold, which didn't match the cursive typed signature.
+> - **Strikethrough field type unhidden** in the template builder ([`field_type.vue`](app/javascript/template_builder/field_type.vue), [`fields.vue`](app/javascript/template_builder/fields.vue)) — supports counter-offer markup workflows where the author strikes through clauses before sending.
+> - **Pre-commit secret scanner** ([`.githooks/pre-commit`](.githooks/pre-commit)) and extended [`.gitignore`](.gitignore) — safeguards against accidentally pushing client data, secrets, or backups to GitHub.
+>
+> Everything else tracks upstream; nothing about the core signing flow, audit trail, or data model has been altered.
+
+<hr>
+
 <h1 align="center" style="border-bottom: none">
   <div>
     <a href="https://www.docuseal.com">
