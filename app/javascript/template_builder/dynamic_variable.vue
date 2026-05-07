@@ -293,7 +293,7 @@ export default {
       }
     },
     dropdownBgColor () {
-      return ['', null, 'transparent'].includes(this.backgroundColor) ? 'white' : this.backgroundColor
+      return ['', null, 'transparent'].includes(this.backgroundColor) ? null : this.backgroundColor
     },
     schemaTypeToFormType () {
       return { string: 'text', number: 'number', boolean: 'checkbox', date: 'date' }

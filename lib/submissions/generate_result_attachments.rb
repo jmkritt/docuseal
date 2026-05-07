@@ -346,13 +346,13 @@ module Submissions
             doc_id_full = Digest::MD5.hexdigest(submitter.submission.slug).upcase
             header_string =
               if field_type == 'signature'
-                "#{I18n.with_locale(locale) { I18n.t('digitally_signed_by') }}:"
+                'Sent using KrittSign built on DocuSeal'
               else
                 "#{I18n.with_locale(locale) { I18n.t('initials') }}:"
               end
             id_string = "#{doc_id_full[0, 16]}..."
 
-            amber_border = HexaPDF::Content::ColorSpace::DeviceRGB.new.color(0.71, 0.45, 0.05)
+            amber_border = HexaPDF::Content::ColorSpace::DeviceRGB.new.color(0.831, 0.659, 0.294)
             slate_text = HexaPDF::Content::ColorSpace::DeviceRGB.new.color(0.16, 0.16, 0.20)
             muted_text = HexaPDF::Content::ColorSpace::DeviceRGB.new.color(0.42, 0.45, 0.50)
 
@@ -395,12 +395,6 @@ module Submissions
             image_y_top = box_y_top - header_h - header_gap
             image_y_bottom = image_y_top - image_h_drawn
             image_x_left = inner_left + ((content_w - image_w_drawn) / 2.0)
-
-            canvas.save_graphics_state do
-              canvas.fill_color(255, 255, 255)
-                    .rectangle(area_x, box_y_bottom, area_w, area_h)
-                    .fill
-            end
 
             header_font = pdf.fonts.add('Helvetica', variant: :bold)
             label_font = pdf.fonts.add('Helvetica')

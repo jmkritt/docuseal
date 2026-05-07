@@ -47,6 +47,175 @@ button[disabled] .enabled, button.btn-disabled .enabled {
   @apply no-animation;
 }
 
+/* === Kritt theme: keep form inputs readable on dark chrome === */
+.input,
+.textarea,
+.select,
+.base-input,
+.base-textarea,
+.base-select,
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='number'],
+input[type='tel'],
+input[type='search'],
+input[type='url'],
+input[type='date'],
+input[type='datetime-local'],
+input[type='time'],
+textarea,
+select {
+  color: #0A0A0A !important;
+  background-color: #FFFFFF !important;
+}
+
+.input::placeholder,
+.textarea::placeholder,
+.base-input::placeholder,
+.base-textarea::placeholder,
+input::placeholder,
+textarea::placeholder {
+  color: #6B6B6B !important;
+}
+
+/* === Kritt theme: legibility fixes for hardcoded color classes === */
+/* DocuSeal templates use text-neutral / border-neutral-X / bg-neutral
+   in many places — designed for the original light theme. On dark these
+   become invisible-on-invisible. Map them to readable values. */
+.text-neutral {
+  color: hsl(var(--bc) / 1) !important;
+}
+.text-gray-500,
+.text-gray-600,
+.text-gray-700,
+.text-gray-800,
+.text-gray-900 {
+  color: hsl(var(--bc) / 0.85) !important;
+}
+.border-neutral-200,
+.border-neutral-300 {
+  border-color: rgba(212, 168, 75, 0.25) !important;
+}
+.border-neutral-600,
+.border-neutral-700 {
+  border-color: #D4A84B !important;
+}
+.hover\:border-neutral-600:hover,
+.hover\:border-neutral-700:hover {
+  border-color: #D4A84B !important;
+}
+.bg-gray-100,
+.bg-gray-200 {
+  background-color: #1C1C1C !important;
+  color: #FAFAFA !important;
+}
+
+/* === Kritt theme: visible field-type picker in template builder === */
+/* Buttons use transparent bg + border-base-300 (very dark) which on a
+   dark page makes the picker invisible. Force visible chrome. */
+.field-type-button {
+  background-color: #1C1C1C !important;
+  border-color: rgba(212, 168, 75, 0.3) !important;
+  color: #FAFAFA !important;
+}
+.field-type-button:hover {
+  border-color: #D4A84B !important;
+  background-color: #2C2C2C !important;
+}
+.field-type-button svg {
+  color: #FAFAFA !important;
+}
+
+/* === Kritt theme: ensure template-builder chrome is visible === */
+/* The builder sidebars use bg-base-200 (#1C1C1C) which barely shows
+   against bg-base-100 (#0A0A0A) page. Add subtle borders so panel
+   edges are perceivable. */
+template-builder .sticky,
+template-builder [class*="bg-base-200"] {
+  border: 1px solid rgba(212, 168, 75, 0.15);
+}
+template-builder .border-base-200,
+template-builder .border-base-300 {
+  border-color: rgba(212, 168, 75, 0.2) !important;
+}
+
+/* === Kritt theme: hardcoded bg-white surfaces should use theme bg === */
+/* Many components in template_builder (controls, modals, dropdowns, banners)
+   use `bg-white` for their panels — fine on light theme, invisible-text on dark.
+   Force them to theme's base-100, with light text. Form inputs are exempted
+   (handled separately above to keep white bg + black text for legibility). */
+.bg-white:not(.input):not(.base-input):not(.base-textarea):not(input):not(textarea):not(select):not([class*='bg-white-keep']) {
+  background-color: hsl(var(--b1)) !important;
+  color: hsl(var(--bc)) !important;
+}
+.bg-white .text-base-content,
+.bg-white .text-neutral {
+  color: hsl(var(--bc)) !important;
+}
+
+/* === Kritt theme: sticky template-builder header needs explicit bg === */
+/* Without an opaque background, sticky elements let the white PDF show
+   through, looking like a cream/white banner. Force theme bg so the
+   header reads as part of the chrome, not a translucent overlay. */
+#title_container,
+.title-container,
+template-builder .sticky {
+  background-color: hsl(var(--b1)) !important;
+  color: hsl(var(--bc)) !important;
+}
+
+/* Submitter "1st party" dropdown in field picker */
+.roles-dropdown,
+.roles-dropdown-label-mobile {
+  background-color: hsl(var(--b2)) !important;
+  color: hsl(var(--bc)) !important;
+  border: 1px solid rgba(212, 168, 75, 0.25);
+}
+
+/* === Kritt theme: dropdown menus always dark with light text === */
+/* Catches all daisyUI dropdowns including the submitter selector,
+   field type dropdown, area title popovers, etc. */
+.dropdown-content,
+.dropdown .menu,
+.dropdown ul.menu,
+ul.dropdown-content {
+  background-color: hsl(var(--b1)) !important;
+  color: hsl(var(--bc)) !important;
+  border: 1px solid rgba(212, 168, 75, 0.25);
+}
+
+.dropdown-content li > a,
+.dropdown-content li > a:not(.active) {
+  color: hsl(var(--bc)) !important;
+  background-color: transparent;
+}
+
+.dropdown-content li > a:hover,
+.dropdown-content li > a:focus {
+  background-color: hsl(var(--b2)) !important;
+  color: hsl(var(--bc)) !important;
+}
+
+.dropdown-content li > a.active,
+.dropdown-content li.active > a {
+  background-color: rgba(212, 168, 75, 0.15) !important;
+  color: hsl(var(--bc)) !important;
+}
+
+/* === Kritt theme: field cards in right sidebar === */
+/* When user drags a field onto the document, a card appears in the
+   right sidebar with the field name, settings, etc. Without explicit bg
+   it inherits from somewhere problematic — force theme dark gray + gold. */
+.list-field .fields-list-item {
+  background-color: hsl(var(--b2)) !important;
+  color: hsl(var(--bc)) !important;
+  border-color: rgba(212, 168, 75, 0.25) !important;
+}
+.list-field [contenteditable] {
+  color: hsl(var(--bc)) !important;
+}
+
 .base-input {
   @apply input input-bordered bg-white;
 }

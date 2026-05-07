@@ -10,6 +10,11 @@
   </div>
   <% if signed_in? %>
     <div class="space-x-4 flex items-center">
+      <div class="hidden md:flex items-center gap-1.5 mr-2 opacity-70" title="KrittSign built on DocuSeal">
+        <img src="/kritt-logo.webp" alt="Kritt" class="h-5 w-auto">
+        <span class="text-base-content/40 text-xs">+</span>
+        <%= render 'shared/logo', height: '18', width: '18' %>
+      </div>
       <% if Docuseal.demo? %>
         <a href="https://docuseal.com/sign_up" class="btn btn-neutral btn-sm btn-outline inline-flex items-center justify-center" style="height: 37px">
           <%= t('sign_up') %>
