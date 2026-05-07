@@ -317,7 +317,7 @@
     <div
       v-else-if="withDisclosure"
       dir="auto"
-      class="text-base-content/60 text-xs text-center w-full mt-1 select-none"
+      class="text-base-content text-sm text-center w-full mt-3 mb-1 px-3 py-2 border border-base-content/30 rounded select-none"
     >
       {{ t('by_clicking_you_agree_to_the').replace('{button}', buttonText.charAt(0).toUpperCase() + buttonText.slice(1)) }} <a
         href="https://www.docuseal.com/esign-disclosure"

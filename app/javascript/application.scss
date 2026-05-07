@@ -111,6 +111,19 @@ textarea::placeholder {
   color: #FAFAFA !important;
 }
 
+/* === Kritt theme: field-area content on the white PDF === */
+/* Field areas sit on top of the rendered white PDF page. Without a baseline
+   color, typed text and signature/initials icons inherit the dark theme's
+   --bc (white) and disappear on the white PDF. Set a dark inheritance
+   baseline; inline preferences.color (color picker) still overrides.
+   IMPORTANT: target .field-area (inner) and field-value only — NOT
+   .field-area-container, because AreaTitle (the dark badge above each
+   field) lives in the container and needs to keep its white text. */
+.field-area,
+field-value {
+  color: #0A0A0A;
+}
+
 /* === Kritt theme: visible field-type picker in template builder === */
 /* Buttons use transparent bg + border-base-300 (very dark) which on a
    dark page makes the picker invisible. Force visible chrome. */

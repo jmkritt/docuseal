@@ -119,3 +119,10 @@ textarea::placeholder {
 .field-area * {
   color: #0A0A0A !important;
 }
+
+/* Server-rendered prefilled values (<field-value>) sit on the white PDF outside
+   .field-area; give them a dark inheritance baseline so they're legible.
+   No !important — inline preferences.color (color picker) still wins. */
+field-value {
+  color: #0A0A0A;
+}
