@@ -78,3 +78,44 @@ button[disabled] .enabled, button.btn-disabled .enabled {
 .font-courier {
   font-family: "Courier New", Consolas, "Liberation Mono", monospace, ui-monospace, SFMono-Regular, Menlo, Monaco;
 }
+
+/* === Kritt theme: legibility for signing form inputs === */
+/* Signers type into fields overlaid on the PDF document. The text needs
+   to be black on white so it's readable as it's typed and as it sits on
+   the white PDF page. */
+.input,
+.textarea,
+.select,
+.base-input,
+.base-textarea,
+.base-select,
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='number'],
+input[type='tel'],
+input[type='search'],
+input[type='url'],
+input[type='date'],
+input[type='datetime-local'],
+input[type='time'],
+textarea,
+select {
+  color: #0A0A0A !important;
+  background-color: #FFFFFF !important;
+}
+
+.input::placeholder,
+.textarea::placeholder,
+.base-input::placeholder,
+.base-textarea::placeholder,
+input::placeholder,
+textarea::placeholder {
+  color: #6B6B6B !important;
+}
+
+/* Field-area text values rendered on the PDF (when filled) — black for legibility */
+.field-area,
+.field-area * {
+  color: #0A0A0A !important;
+}
