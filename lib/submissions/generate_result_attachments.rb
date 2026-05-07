@@ -346,7 +346,7 @@ module Submissions
             doc_id_full = Digest::MD5.hexdigest(submitter.submission.slug).upcase
             header_string =
               if field_type == 'signature'
-                'Sent using KrittSign built on DocuSeal'
+                'Digitally signed by:'
               else
                 "#{I18n.with_locale(locale) { I18n.t('initials') }}:"
               end
